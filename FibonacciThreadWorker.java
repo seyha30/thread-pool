@@ -25,7 +25,7 @@ public class FibonacciThreadWorker extends Thread {
 			System.out.println("Thread-" + index + " is calculating fibonaci");
 			long f = fib(number);
 			System.out.println("Thread-" + index + " is sending result");
-			out.println("" + f);
+			out.println("Fibonacci ==>>> " + f);
 			System.out.println("----------------------------------------");
 		} catch (Exception e) {
 			System.out.println(e);

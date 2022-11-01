@@ -19,7 +19,7 @@ public class Server {
 		final int FIBONACCI_THREAD_POOL = 3;
 		final int FACTORIAL_THREAD_POOL = 2;
 		String command = "Fibo";
-		int number = 10;
+		int number = 0;
 		String data = "";
 		String[] parts = null;
 		System.out.println("Server running");
