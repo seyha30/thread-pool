@@ -19,12 +19,20 @@ public class Server {
 		System.out.println("Server running");
 		try {
 			serverSocket = new ServerSocket(9999);
-			pool =  Executors.newFixedThreadPool(fibonacciThreadPool);
 			while (true) {
-				System.out.println("Thread Pool Fibonaci is waiting for client....");
+				System.out.println("The server is waiting for client....");
 				Socket socket = serverSocket.accept();
-				FibonacciThreadWorker FibonaciThreadWorker = new FibonacciThreadWorker(socket, index, 10);
-				pool.execute(FibonaciThreadWorker);
+				if ("".equalsIgnoreCase("Fibo")) {
+					pool = Executors.newFixedThreadPool(fibonacciThreadPool);
+					FibonacciThreadWorker fibonaciThreadWorker = new FibonacciThreadWorker(socket, index, 10);
+					pool.execute(fibonaciThreadWorker);
+				}
+				if ("".equalsIgnoreCase("Fact")) {
+					pool = Executors.newFixedThreadPool(factorialThreadPool);
+					FactorialThreadWorker factorialThreadWorker = new FactorialThreadWorker(socket, index, 20);
+					pool.execute(factorialThreadWorker);
+				}
+
 				index++;
 			}
 
