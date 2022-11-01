@@ -14,7 +14,6 @@ public class FibonacciThreadWorker extends Thread {
 		this.socket = socket;
 		this.index = inde;
 		this.number = number;
-
 	}
 
 	@Override
@@ -23,10 +22,8 @@ public class FibonacciThreadWorker extends Thread {
 			System.out.println("----------------------------------------");
 			System.out.println("Thread-" + index + " serves connection from " + socket.getInetAddress() + ":" + socket.getPort());
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-
 			System.out.println("Thread-" + index + " is calculating fibonaci");
 			long f = fib(number);
-
 			System.out.println("Thread-" + index + " is sending result");
 			out.println("" + f);
 			System.out.println("----------------------------------------");
@@ -38,10 +35,8 @@ public class FibonacciThreadWorker extends Thread {
 	private long fib(long n) {
 		if (n == 0)
 			return 0L;
-
 		if (n == 1)
 			return 1L;
-
 		return (fib(n - 1) + fib(n - 2));
 	}
 
