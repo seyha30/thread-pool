@@ -28,7 +28,6 @@ public class Client {
 				System.out.println(line);
 				line = in.readLine();
 			}
-
 			// Close our streams
 			in.close();
 			out.close();

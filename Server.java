@@ -22,12 +22,12 @@ public class Server {
 		int number = 10;
 		System.out.println("Server running" + command);
 		try {
-			serverSocket = new ServerSocket(9999);
+			serverSocket = new ServerSocket(8888);
 			Socket socket = serverSocket.accept();
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			System.out.println("The server is waiting for client...." + serverSocket.getInetAddress());
 			while (true) {
-				System.out.println();
+				System.out.println( in.readLine());
 				if ("Fibo".equalsIgnoreCase(command)) {
 					pool = Executors.newFixedThreadPool(fibonacciThreadPool);
 					FibonacciThreadWorker fibonaciThreadWorker = new FibonacciThreadWorker(socket, index, number);
