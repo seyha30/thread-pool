@@ -26,12 +26,12 @@ public class Server {
 				Socket socket = serverSocket.accept();
 				if ("Fibo".equalsIgnoreCase(command)) {
 					pool = Executors.newFixedThreadPool(fibonacciThreadPool);
-					FibonacciThreadWorker fibonaciThreadWorker = new FibonacciThreadWorker(socket, index, 10);
+					FibonacciThreadWorker fibonaciThreadWorker = new FibonacciThreadWorker(socket, index, number);
 					pool.execute(fibonaciThreadWorker);
 				}
 				if ("Fact".equalsIgnoreCase(command)) {
 					pool = Executors.newFixedThreadPool(factorialThreadPool);
-					FactorialThreadWorker factorialThreadWorker = new FactorialThreadWorker(socket, index, 20);
+					FactorialThreadWorker factorialThreadWorker = new FactorialThreadWorker(socket, index, number);
 					pool.execute(factorialThreadWorker);
 				}
 
