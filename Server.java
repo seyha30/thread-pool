@@ -18,25 +18,21 @@ public class Server {
 		int index = 0;
 		int fibonacciThreadPool = 3;
 		int factorialThreadPool = 2;
-		String command = null;
-		int number = 0;
-		System.out.println("Server running");
+		String command = "Fibo";
+		int number = 10;
+		System.out.println("Server running" + command);
 		try {
 			serverSocket = new ServerSocket(9999);
 			Socket socket = serverSocket.accept();
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			System.out.println("The server is waiting for client...." + serverSocket.getInetAddress());
 			while (true) {
-                 System.out.print( " client ==  > " + number);
-             	pool = Executors.newFixedThreadPool(fibonacciThreadPool);
-				FibonacciThreadWorker fibonaciThreadWorker = new FibonacciThreadWorker(socket, index, number);
-				pool.execute(fibonaciThreadWorker);
 				System.out.println();
-//				if ("Fibo".equalsIgnoreCase(command)) {
-//					pool = Executors.newFixedThreadPool(fibonacciThreadPool);
-//					FibonacciThreadWorker fibonaciThreadWorker = new FibonacciThreadWorker(socket, index, number);
-//					pool.execute(fibonaciThreadWorker);
-//				}
+				if ("Fibo".equalsIgnoreCase(command)) {
+					pool = Executors.newFixedThreadPool(fibonacciThreadPool);
+					FibonacciThreadWorker fibonaciThreadWorker = new FibonacciThreadWorker(socket, index, number);
+					pool.execute(fibonaciThreadWorker);
+				}
 				if ("Fact".equalsIgnoreCase(command)) {
 					pool = Executors.newFixedThreadPool(factorialThreadPool);
 					FactorialThreadWorker factorialThreadWorker = new FactorialThreadWorker(socket, index, number);
