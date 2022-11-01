@@ -16,8 +16,8 @@ public class Server {
 		ExecutorService pool = null;
 
 		int index = 0;
-		int fibonacciThreadPool = 3;
-		int factorialThreadPool = 2;
+		final int FIBONACCI_THREAD_POOL = 3;
+		final int FACTORIAL_THREAD_POOL = 2;
 		String command = "Fibo";
 		int number = 10;
 		System.out.println("Server running" + command);
@@ -27,14 +27,14 @@ public class Server {
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			System.out.println("The server is waiting for client...." + serverSocket.getInetAddress());
 			while (true) {
-				System.out.println( in.readLine());
+				System.out.println(in.readLine());
 				if ("Fibo".equalsIgnoreCase(command)) {
-					pool = Executors.newFixedThreadPool(fibonacciThreadPool);
+					pool = Executors.newFixedThreadPool(FIBONACCI_THREAD_POOL);
 					FibonacciThreadWorker fibonaciThreadWorker = new FibonacciThreadWorker(socket, index, number);
 					pool.execute(fibonaciThreadWorker);
 				}
 				if ("Fact".equalsIgnoreCase(command)) {
-					pool = Executors.newFixedThreadPool(factorialThreadPool);
+					pool = Executors.newFixedThreadPool(FACTORIAL_THREAD_POOL);
 					FactorialThreadWorker factorialThreadWorker = new FactorialThreadWorker(socket, index, number);
 					pool.execute(factorialThreadWorker);
 				}
