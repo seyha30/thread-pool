@@ -12,8 +12,7 @@ public class Client {
 	public static void main(String[] args) {
 
 		Socket socket = null;
-		if (args.length < 2) {
-
+		if (!checkLength(args)) {
 			System.out.println("client" + args.length);
 			System.exit(0);
 		}
@@ -23,7 +22,7 @@ public class Client {
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 //			send request server
-			out.println(args[0]+" "+args[1]);
+			out.println(args[0] + " " + args[1]);
 			String line = in.readLine();
 			while (line != null) {
 				System.out.println(line);
@@ -37,5 +36,12 @@ public class Client {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static Boolean checkLength(String[] args) {
+		Boolean permit = false;
+		if (args.length >= 2)
+			permit = true;
+		return permit;
 	}
 }
