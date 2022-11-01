@@ -20,14 +20,22 @@ public class Server {
 		final int FACTORIAL_THREAD_POOL = 2;
 		String command = "Fibo";
 		int number = 10;
-		System.out.println("Server running" + command);
+		String data = "";
+		String[] parts = null;
+		System.out.println("Server running");
 		try {
-			serverSocket = new ServerSocket(9999);
+			serverSocket = new ServerSocket(8888);
 			Socket socket = serverSocket.accept();
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			System.out.println("The server is waiting for client...." + serverSocket.getInetAddress());
 			while (true) {
-				System.out.println("Data === > " + in.readLine());
+				data = in.readLine();
+				 System.out.println(  "" + data);
+				parts = data.split(" ");
+				command = parts[0];
+				number = Integer.parseInt(parts[1]);
+				System.out.println("command =>>>>>>" + command + " number   =>>>>>  " + number );
+
 				if ("Fibo".equalsIgnoreCase(command)) {
 					pool = Executors.newFixedThreadPool(FIBONACCI_THREAD_POOL);
 					FibonacciThreadWorker fibonaciThreadWorker = new FibonacciThreadWorker(socket, index, number);

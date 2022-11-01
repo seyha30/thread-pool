@@ -18,16 +18,12 @@ public class FactorialThreadWorker extends Thread {
 	@Override
 	public void run() {
 		try {
-			System.out.println("----------------------------------------");
 			System.out.println("Thread-" + index + " serves connection from " + socket.getInetAddress() + ":" + socket.getPort());
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-
 			System.out.println("Thread-" + index + " is calculating factorial");
 			long f = factorial(number);
-
 			System.out.println("Thread-" + index + " is sending result");
-			out.println("" + f);
-			System.out.println("----------------------------------------");
+			out.println("factorial  " + number + "===> " + f);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
