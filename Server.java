@@ -30,11 +30,11 @@ public class Server {
 			System.out.println("The server is waiting for client...." + serverSocket.getInetAddress());
 			while (true) {
 				data = in.readLine();
-				 System.out.println(  "" + data);
+				System.out.println("" + data);
 				parts = data.split(" ");
 				command = parts[0];
 				number = Integer.parseInt(parts[1]);
-				System.out.println("command =>>>>>>" + command + " number   =>>>>>  " + number );
+				System.out.println("command =>>>>>>" + command + " number   =>>>>>  " + number);
 
 				if ("Fibo".equalsIgnoreCase(command)) {
 					pool = Executors.newFixedThreadPool(FIBONACCI_THREAD_POOL);
