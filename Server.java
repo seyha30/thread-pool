@@ -1,6 +1,8 @@
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author seyha.sin Nov 1, 2022/2022 : 9:34:47 AM
@@ -17,6 +19,7 @@ public class Server {
 		System.out.println("Server running");
 		try {
 			serverSocket = new ServerSocket(9999);
+			pool =  Executors.newFixedThreadPool(fibonacciThreadPool);
 			while (true) {
 				System.out.println("Thread Pool Fibonaci is waiting for client....");
 				Socket socket = serverSocket.accept();
