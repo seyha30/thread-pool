@@ -13,7 +13,7 @@ public class Client {
 
 		Socket socket = null;
 		if (!checkLength(args)) {
-			System.out.println("client" + args.length);
+			System.out.println("incorrect command");
 			System.exit(0);
 		}
 		try {
