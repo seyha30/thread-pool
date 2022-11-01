@@ -16,18 +16,20 @@ public class Server {
 		int index = 0;
 		int fibonacciThreadPool = 3;
 		int factorialThreadPool = 2;
+		String command = null;
+		int number = 0;
 		System.out.println("Server running");
 		try {
 			serverSocket = new ServerSocket(9999);
 			while (true) {
 				System.out.println("The server is waiting for client....");
 				Socket socket = serverSocket.accept();
-				if ("".equalsIgnoreCase("Fibo")) {
+				if ("Fibo".equalsIgnoreCase(command)) {
 					pool = Executors.newFixedThreadPool(fibonacciThreadPool);
 					FibonacciThreadWorker fibonaciThreadWorker = new FibonacciThreadWorker(socket, index, 10);
 					pool.execute(fibonaciThreadWorker);
 				}
-				if ("".equalsIgnoreCase("Fact")) {
+				if ("Fact".equalsIgnoreCase(command)) {
 					pool = Executors.newFixedThreadPool(factorialThreadPool);
 					FactorialThreadWorker factorialThreadWorker = new FactorialThreadWorker(socket, index, 20);
 					pool.execute(factorialThreadWorker);
